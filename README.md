@@ -1,99 +1,98 @@
-# Frontend Mentor - Time tracking dashboard
+# Time-Tracking-DashBoard
 
-![Design preview for the Time tracking dashboard coding challenge](./design/desktop-preview.jpg)
+- Live website -(https://cpwd-time-tracking-dashboard.netlify.app/)
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [The challenge](#the-challenge)
+- [Screenshot](#screenshot)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+### The challenge
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
-
-## The challenge
-
-Your challenge is to build out this dashboard and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-If you would like to practice working with JSON data, we provide a local `data.json` file for the activities. This means you'll be able to pull the data from there instead of using the content in the `.html` file.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Switch between viewing Daily, Weekly, and Monthly stats
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+## My process
 
-### Expected behaviour
+### Screenshot
 
-- The text for the previous period's time should change based on the active timeframe. For Daily, it should read "Yesterday" e.g "Yesterday - 2hrs". For Weekly, it should read "Last Week" e.g. "Last Week - 32hrs". For monthly, it should read "Last Month" e.g. "Last Month - 19hrs".
+### End Result
 
-## Where to find everything
+![127 0 0 1_5501_index html](https://user-images.githubusercontent.com/85038929/133371242-06e8186e-6de8-43f6-b475-d41fe1e912c3.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
+![127 0 0 1_5501_index html (1)](https://user-images.githubusercontent.com/85038929/133371301-c71ba864-adfa-4860-99dd-19ebac4d9f55.png)
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
+### Built with
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+- Semantic HTML5 markup
+- CSS custom properties
+- CSS Grid
+- JavaScript
+- Media Queries
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+### What I learned
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+In this challenge I learned how to utilize a JSON file into my JavaScript. At first I thought that I would have to somehow link the data.json file to my javascript and somehow import the content. What I found to be most helpful was to change the file into a script.js file or simply copy and paste the object into quotation marks. I then set the object to a variable in order to use it in my function.
 
-## Building your project
+```Javascript
+periodButton.forEach(button => {
+    button.addEventListener('click', () => {
+        for(let i = 0; i<button.parentElement.children.length; i++) {
+          if (button.parentElement.children[i].classList.contains('selected')){
+            button.parentElement.children[i].classList.remove('selected')
+          }
+        }
+        button.classList.add('selected')
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+        const setting = button.innerHTML
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+        for(let i=0; i<cardData.length; i++) {
 
-## Deploying your project
+            let currentHoursDaily = JSON.parse(data)[i].timeframes.daily.current
+            let prevHoursDaily = JSON.parse(data)[i].timeframes.daily.previous
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+            let currentHoursWeekly = JSON.parse(data)[i].timeframes.weekly.current
+            let prevHoursWeekly = JSON.parse(data)[i].timeframes.weekly.previous
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+            let currentHoursMonthly = JSON.parse(data)[i].timeframes.monthly.current
+            let prevHoursMonthly = JSON.parse(data)[i].timeframes.monthly.previous
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+            if (setting === 'Daily'){
+                cardData[i].children[0].innerHTML = `${currentHoursDaily}hrs`
+                cardData[i].children[1].innerHTML = `Yesterday - ${prevHoursDaily}hrs`
+            } else if (setting === 'Weekly'){
+                cardData[i].children[0].innerHTML = `${currentHoursWeekly}hrs`
+                cardData[i].children[1].innerHTML = `Last Week - ${prevHoursWeekly}hrs`
+            } else if (setting === 'Monthly'){
+                cardData[i].children[0].innerHTML = `${currentHoursMonthly}hrs`
+                cardData[i].children[1].innerHTML = `Last Month - ${prevHoursMonthly}hrs`
+            }
+        }
 
-## Create a custom `README.md`
+    })
+})
+```
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+- what I did here is that I set a forEach() method for my three buttons that change the data. After adding the event listener, I added two different 'for loops'. The first loop removes the class 'selected' from the selected button so that I can add the selected class to the recently selected button. In the following section I used the for loop to cycle throught each of my card divs. Within the JSON object there were an equal amount of values. As the loop cycled to the next card element, the loop would also cycle through the object values and set the data into the html accordingly.
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+### Useful resources
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+- [JavaScript Objects](https://www.w3schools.com/js/js_objects.asp) - documentation that provides information on JavaScript Objects
 
-## Submitting your solution
+- [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) - Documentation that provides useful information on how JSON objects contain values and how they work
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+- [Debugging JavaScript in Visual Studio Code and Google Chrome](https://www.youtube.com/watch?v=AX7uybwukkk&ab_channel=JamesQQuick) - this video taught me how to debug my javascript using the debugger tool in developer tools
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+## Author
 
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+- Website - [Carlos Perez](https://www.site.com)
+- Frontend Mentor - [@Carlos-A-P](https://www.frontendmentor.io/profile/yourusername)
+- Twitter - [@WDCarlosP](https://www.twitter.com/WDCarlosP)
