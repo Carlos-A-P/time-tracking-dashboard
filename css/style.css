@@ -1,0 +1,214 @@
+:root {
+	--Blue: hsl(246, 80%, 60%);
+
+	--Light-orange/*(work)*/: hsl(15, 100%, 70%);
+	--Soft-blue/*(play)*/: hsl(195, 74%, 62%);
+	--Light-red/*(study)*/: hsl(348, 100%, 68%);
+	--Lime-green/*(exercise)*/: hsl(145, 58%, 55%);
+	--Violet/*(social)*/: hsl(264, 64%, 52%);
+	--Soft-orange/*(self care)*/: hsl(43, 84%, 65%);
+	--Very-dark-blue: hsl(226, 43%, 10%);
+	--Dark-blue: hsl(235, 46%, 20%);
+	--Desaturated-blue: hsl(235, 45%, 61%);
+	--Pale-Blue: hsl(236, 100%, 87%);
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Rubik", sans-serif;
+	background-color: var(--Very-dark-blue);
+	padding: 5rem 1.5rem;
+}
+
+main {
+	max-width: 330px;
+	margin: 0 auto 2rem;
+	display: grid;
+	gap: 1.5rem;
+	grid-template-areas:
+		"title-card"
+		"work"
+		"play"
+		"study"
+		"exercise"
+		"social"
+		"self-care";
+}
+
+h1,
+h2,
+h3 {
+	color: hsl(237, 100%, 95%);
+	font-weight: 400;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 24px;
+}
+
+h2 {
+	font-size: 18px;
+	font-weight: 500;
+}
+
+h3 {
+	font-size: 30px;
+	font-weight: 300;
+}
+
+.title-card,
+.card-content {
+	background-color: var(--Dark-blue);
+	border-radius: 15px;
+}
+
+.profile-header {
+	background-color: var(--Blue);
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	/* justify-content: center; */
+	padding: 2rem 1.5rem;
+	border-radius: 15px;
+}
+
+.period {
+	padding: 1.7rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+button {
+	border: none;
+	background: none;
+	color: var(--Pale-Blue);
+	font-size: 18px;
+}
+
+button:hover {
+	cursor: pointer;
+	color: white;
+}
+
+.card a:hover {
+	filter: brightness(100);
+}
+
+.avatar img {
+	border: 3px white solid;
+	border-radius: 50%;
+	width: 80px;
+}
+
+p {
+	color: var(--Pale-Blue);
+	font-weight: 400;
+}
+
+.top,
+.bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.top {
+	margin-bottom: 0.7rem;
+}
+
+.card-content {
+	padding: 1.5rem;
+}
+
+.card:not(:first-child) {
+	padding-top: 2.5rem;
+}
+
+.card {
+	border-radius: 15px;
+}
+
+.title-card {
+	grid-area: title-card;
+}
+
+.work {
+	grid-area: work;
+	background-color: var(--Light-orange);
+	background-image: url(../images/icon-work.svg);
+	background-repeat: no-repeat;
+	background-position: right 13px top -9px;
+}
+
+.play {
+	grid-area: play;
+	background-color: var(--Soft-blue);
+	background-image: url(../images/icon-play.svg);
+	background-repeat: no-repeat;
+	background-position: right 13px top -9px;
+}
+
+.study {
+	grid-area: study;
+	background-color: var(--Light-red);
+	background-image: url(../images/icon-study.svg);
+	background-repeat: no-repeat;
+	background-position: right 13px top -9px;
+}
+
+.exercise {
+	grid-area: exercise;
+	background-color: var(--Lime-green);
+	background-image: url(../images/icon-exercise.svg);
+	background-repeat: no-repeat;
+	background-position: right 13px top -9px;
+}
+
+.social {
+	grid-area: social;
+	background-color: var(--Violet);
+	background-image: url(../images/icon-social.svg);
+	background-repeat: no-repeat;
+	background-position: right 13px top -9px;
+}
+
+.self-care {
+	grid-area: self-care;
+	background-color: var(--Soft-orange);
+	background-image: url(../images/icon-self-care.svg);
+	background-repeat: no-repeat;
+	background-position: right 13px top -9px;
+}
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+	color: white;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 1000px) {
+	body {
+		padding: 5rem 1.5rem;
+	}
+
+	main {
+		max-width: 900px;
+		margin: 8rem auto 2rem;
+		display: grid;
+		gap: 1.5rem;
+		grid-template-areas:
+			"title-card work play study"
+			"title-card exercise social self-care";
+	}
+}
