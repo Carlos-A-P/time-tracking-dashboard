@@ -105,10 +105,15 @@ const data = `[
     }
   ]`
 
-
 periodButton.forEach(button => {
     button.addEventListener('click', () => {
-        // debugger
+        for(let i = 0; i<button.parentElement.children.length; i++) {
+          if (button.parentElement.children[i].classList.contains('selected')){
+            button.parentElement.children[i].classList.remove('selected')
+          }
+        }
+        button.classList.add('selected')
+
         const setting = button.innerHTML
 
         for(let i=0; i<cardData.length; i++) {

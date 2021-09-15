@@ -197,9 +197,13 @@ p {
 	color: hsl(228, 45%, 44%);
 }
 
+.selected {
+	color: white;
+}
+
 @media (min-width: 1000px) {
 	body {
-		padding: 5rem 1.5rem;
+		padding: 3rem 1.5rem;
 	}
 
 	main {
@@ -210,5 +214,57 @@ p {
 		grid-template-areas:
 			"title-card work play study"
 			"title-card exercise social self-care";
+	}
+
+	.profile-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 30px;
+		padding: 2rem 1.5rem;
+		padding-bottom: 68px;
+	}
+
+	h1 {
+		font-size: 2rem;
+		padding-right: 2rem;
+	}
+
+	.period {
+		padding: 1.7rem;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 19px;
+		/* margin-top: auto; */
+		padding-top: 10px;
+	}
+
+	button,
+	h2,
+	p {
+		font-size: 15px;
+	}
+
+	.bottom {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	h3 {
+		font-size: 2.5rem;
+		margin: 1rem 0 0.5rem;
+	}
+
+	.title-card {
+		max-width: 200px;
+		justify-self: flex-end;
+	}
+
+	.card-content:hover {
+		background-color: hsl(235, 30%, 45%);
+		cursor: pointer;
+	}
+
+	.selected {
+		color: white;
 	}
 }
