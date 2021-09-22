@@ -42,6 +42,8 @@ Users should be able to:
 
 In this challenge I learned how to utilize a JSON file into my JavaScript. At first I thought that I would have to somehow link the data.json file to my javascript and somehow import the content. What I found to be most helpful was to change the file into a script.js file or simply copy and paste the object into quotation marks. I then set the object to a variable in order to use it in my function.
 
+- What I did here is that I set a forEach() method for my three buttons that change the data. After adding the event listener, I added two different 'for loops'. The first loop removes the class 'selected' from the selected button so that I can add the selected class to the recently selected button. In the following section I used the for loop to cycle through each of my card divs. Within the JSON object there were an equal amount of values. As the loop cycled to the next card element, the loop would also cycle through the object values and set the data into the html accordingly.
+
 ```Javascript
 periodButton.forEach(button => {
     button.addEventListener('click', () => {
@@ -80,8 +82,6 @@ periodButton.forEach(button => {
     })
 })
 ```
-
-- what I did here is that I set a forEach() method for my three buttons that change the data. After adding the event listener, I added two different 'for loops'. The first loop removes the class 'selected' from the selected button so that I can add the selected class to the recently selected button. In the following section I used the for loop to cycle throught each of my card divs. Within the JSON object there were an equal amount of values. As the loop cycled to the next card element, the loop would also cycle through the object values and set the data into the html accordingly.
 
 ### Useful resources
 
